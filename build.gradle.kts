@@ -129,9 +129,10 @@ publishing {
 jlink {
 //	options.set(listOf("--strip-debug"))
 	jpackage {
-		skipInstaller = true
+		vendor = "The Quilt Project"
 		if (platform == "windows") {
 			imageOptions = listOf("--win-console")
+			skipInstaller = true
 		}
 		appVersion = if (baseVersion.startsWith("0.")) {
 			baseVersion.substring(2)
@@ -141,8 +142,15 @@ jlink {
 		// sorry everyone, but i use windows
 		icon = if (platform == null || platform == "windows") {
 			"icon.ico"
+		} else if (platform == "macos") {
+			"icon.icns"
 		} else {
 			"src/main/resources/icon.png"
+		}
+
+		if (platform == "macos") {
+			imageOptions = listOf("--copyright", "The Quilt Project", "--mac-package-name", "Quilt Installer",
+					"--mac-bundle-identifier", "org.quiltmc.Installer")
 		}
 	}
 }
