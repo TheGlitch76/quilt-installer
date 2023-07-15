@@ -149,8 +149,7 @@ jlink {
 		}
 
 		if (platform == "macos") {
-			imageOptions = listOf("--copyright", "The Quilt Project", "--mac-package-name", "Quilt Installer",
-					"--mac-bundle-identifier", "org.quiltmc.Installer")
+			imageOptions = listOf("--copyright", "The Quilt Project", "--mac-package-name", "Quilt Installer")
 		}
 	}
 }
